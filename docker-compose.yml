@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+    sdk-nfe:
+        build:
+          context: .
+          dockerfile: ./Dockerfile
+        ports:
+          - 3013:3013
+        volumes:
+          - ./:/var/www/html
+        tty: true
+        container_name: sdk-nfe

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+        <infNFe Id="NFe33230239343382000191650990001192441392870856" versao="4.00">
+            <ide>
+                <cUF>33</cUF>
+                <cNF>39287085</cNF>
+                <natOp>Venda de mercadoria</natOp>
+                <mod>65</mod>
+                <serie>99</serie>
+                <nNF>119244</nNF>
+                <dhEmi>2023-02-27T06:23:57-03:00</dhEmi>
+                <tpNF>1</tpNF>
+                <idDest>1</idDest>
+                <cMunFG>3301801</cMunFG>
+                <tpImp>4</tpImp>
+                <tpEmis>1</tpEmis>
+                <cDV>6</cDV>
+                <tpAmb>2</tpAmb>
+                <finNFe>1</finNFe>
+                <indFinal>1</indFinal>
+                <indPres>1</indPres>
+                <procEmi>0</procEmi>
+                <verProc>3.22.8</verProc>
+            </ide>
+            <emit>
+                <CNPJ>39343382000191</CNPJ>
+                <xNome>Cliente PB - TESTE COMPUFOUR</xNome>
+                <xFant>Cliente PB - TESTE COMPUFOUR</xFant>
+                <enderEmit>
+                    <xLgr>Logradouro</xLgr>
+                    <nro>13123</nro>
+                    <xCpl>Complemento</xCpl>
+                    <xBairro>Nazare</xBairro>
+                    <cMun>3301801</cMun>
+                    <xMun>Engenheiro Paulo de Frontin</xMun>
+                    <UF>RJ</UF>
+                    <CEP>26650000</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>BRASIL</xPais>
+                    <fone>4934420122</fone>
+                </enderEmit>
+                <IE>11850790</IE>
+                <CRT>3</CRT>
+            </emit>
+            <autXML>
+                <CNPJ>39343382000191</CNPJ>
+            </autXML>
+            <det nItem="1">
+                <prod>
+                    <cProd>1</cProd>
+                    <cEAN>7891173021793</cEAN>
+                    <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+                    <NCM>44199000</NCM>
+                    <CFOP>5102</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>1.0000</qCom>
+                    <vUnCom>100.0000000000</vUnCom>
+                    <vProd>100.00</vProd>
+                    <cEANTrib>7891173021793</cEANTrib>
+                    <uTrib>KG</uTrib>
+                    <qTrib>1.0000</qTrib>
+                    <vUnTrib>100.0000000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>33.45</vTotTrib>
+                    <ICMS>
+                        <ICMS40>
+                            <orig>0</orig>
+                            <CST>41</CST>
+                        </ICMS40>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>100.00</vBC>
+                            <pPIS>1.0000</pPIS>
+                            <vPIS>1.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>100.00</vBC>
+                            <pCOFINS>1.0000</pCOFINS>
+                            <vCOFINS>1.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+                <infAdProd>OBS</infAdProd>
+            </det>
+            <det nItem="2">
+                <prod>
+                    <cProd>1</cProd>
+                    <cEAN>7891173021793</cEAN>
+                    <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+                    <NCM>44199000</NCM>
+                    <CFOP>5102</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>1.0000</qCom>
+                    <vUnCom>100.0000000000</vUnCom>
+                    <vProd>100.00</vProd>
+                    <cEANTrib>7891173021793</cEANTrib>
+                    <uTrib>KG</uTrib>
+                    <qTrib>1.0000</qTrib>
+                    <vUnTrib>100.0000000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>33.45</vTotTrib>
+                    <ICMS>
+                        <ICMS40>
+                            <orig>0</orig>
+                            <CST>41</CST>
+                        </ICMS40>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>100.00</vBC>
+                            <pPIS>1.0000</pPIS>
+                            <vPIS>1.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>100.00</vBC>
+                            <pCOFINS>1.0000</pCOFINS>
+                            <vCOFINS>1.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+                <infAdProd>OBS</infAdProd>
+            </det>
+            <det nItem="3">
+                <prod>
+                    <cProd>1</cProd>
+                    <cEAN>7891173021793</cEAN>
+                    <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+                    <NCM>44199000</NCM>
+                    <CFOP>5102</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>1.0000</qCom>
+                    <vUnCom>100.0000000000</vUnCom>
+                    <vProd>100.00</vProd>
+                    <cEANTrib>7891173021793</cEANTrib>
+                    <uTrib>KG</uTrib>
+                    <qTrib>1.0000</qTrib>
+                    <vUnTrib>100.0000000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>33.45</vTotTrib>
+                    <ICMS>
+                        <ICMS40>
+                            <orig>0</orig>
+                            <CST>41</CST>
+                        </ICMS40>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>100.00</vBC>
+                            <pPIS>1.0000</pPIS>
+                            <vPIS>1.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>100.00</vBC>
+                            <pCOFINS>1.0000</pCOFINS>
+                            <vCOFINS>1.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+                <infAdProd>OBS</infAdProd>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>0.00</vBC>
+                    <vICMS>0.00</vICMS>
+                    <vICMSDeson>0.00</vICMSDeson>
+                    <vFCP>0.00</vFCP>
+                    <vBCST>0.00</vBCST>
+                    <vST>0.00</vST>
+                    <vFCPST>0.00</vFCPST>
+                    <vFCPSTRet>0.00</vFCPSTRet>
+                    <vProd>300.00</vProd>
+                    <vFrete>0.00</vFrete>
+                    <vSeg>0.00</vSeg>
+                    <vDesc>0.00</vDesc>
+                    <vII>0.00</vII>
+                    <vIPI>0.00</vIPI>
+                    <vIPIDevol>0.00</vIPIDevol>
+                    <vPIS>3.00</vPIS>
+                    <vCOFINS>3.00</vCOFINS>
+                    <vOutro>0.00</vOutro>
+                    <vNF>300.00</vNF>
+                    <vTotTrib>100.35</vTotTrib>
+                </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>9</modFrete>
+            </transp>
+            <pag>
+                <detPag>
+                    <indPag>0</indPag>
+                    <tPag>01</tPag>
+                    <vPag>300.00</vPag>
+                </detPag>
+            </pag>
+            <infAdic>
+                <infCpl>;Trib aprox Fed: R$ 40,35, Est: R$ 60,00, Mun: R$ 0,00 ;/ Fonte:
+                    IBPT/empresometro.com.br 316341</infCpl>
+            </infAdic>
+        </infNFe>
+        <infNFeSupl>
+            <qrCode>
+                http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode?p=33230239343382000191650990001192441392870856|2|2|1|63922345461E8316696926EE800A8EAC9AA9A093</qrCode>
+            <urlChave>www.fazenda.rj.gov.br/nfce/consulta</urlChave>
+        </infNFeSupl>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+                <Reference URI="#NFe33230239343382000191650990001192441392870856">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                    <DigestValue>hjEd2BGfCwWKADhoVVvDqr6Nam8=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>
+                P1+mjzmc1ZhntLd/PG06WIW1rz3RziPZRx1JdEfNcATHG4/BjNxkpd+Gee19xiPmqf5jlg9Ryn5b8mpd5w3cITPdR49CxWCwLMf69CJanksOfBysDbN5sL3FQzlhDGRKiwL7xPdpHWude3dm2bVwaUTUdc1KUFTD1gwubFCDxqw2/7RKXqapKIiRPnQCr8UR0GH9kFt/kvP5fyHe8+hf33MT/87Nd2e0MLR8e8gupIGH3RYxW13syK5wJ8pRbY5y0N6OAWPbVpxOh5TWkZDvluM3tVmhQMCMJTFZG4j3mFZjz0SrQGaDKzULoyH7N9wqATWX9ufwcsxSunWtuqQJ5Q==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>
+                        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</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+    <protNFe versao="4.00">
+        <infProt>
+            <tpAmb>2</tpAmb>
+            <verAplic>SVRSnfce202301190912</verAplic>
+            <chNFe>33230239343382000191650990001192441392870856</chNFe>
+            <dhRecbto>2023-02-27T06:23:59-03:00</dhRecbto>
+            <nProt>333230000070782</nProt>
+            <digVal>hjEd2BGfCwWKADhoVVvDqr6Nam8=</digVal>
+            <cStat>100</cStat>
+            <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+    </protNFe>
+</nfeProc>
