@@ -19,15 +19,15 @@ class IdeBuilder
     public function execute($params)
     {
         $std = new \stdClass();
-        $std->cUF = (string) $params['cUF'];
+        $std->cUF = $params['cUF'] ?? null;
         $std->cNF = rand(10000000, 99999999);
-        $std->natOp = (string) $params['natOp'];
-        $std->natTributo = (string) $params['natTributo'];
-        $std->mod = $params['mod'];
+        $std->natOp = $params['natOp'] ?? null;
+        $std->natTributo = $params['natTributo'] ?? null;
+        $std->mod = $params['mod'] ?? null;
         $std->serie = $this->getSerie($params);
-        $std->nNF = $params['nNF'];
-        $std->idDest = $params['idDest'];
-        $std->cMunFG = $params['cMunFG'];
+        $std->nNF = $params['nNF'] ?? null;
+        $std->idDest = $params['idDest'] ?? null;
+        $std->cMunFG = $params['cMunFG'] ?? null;
         $std->tpAmb = $this->getTpAmb($params);
         $std->tpNF = $this->getTpNF($params);
         $std->tpEmis = TpEmisEnum::NORMAL->value;
@@ -58,7 +58,7 @@ class IdeBuilder
 
     private function getTpNF($params)
     {
-        return (string) !empty($params['tpNF']) ? $params['tpNF'] : TagTpNFEnum::SAIDA->value; 
+        return !empty($params['tpNF']) ? $params['tpNF'] : TagTpNFEnum::SAIDA->value; 
     }
 
     private function getFinNFe($params)

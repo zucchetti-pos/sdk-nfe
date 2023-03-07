@@ -2,18 +2,66 @@
 
 namespace App\Modules\NFE\Builder;
 
+use App\Modules\NFE\Builder\Tags\COFINSBuilder;
+use App\Modules\NFE\Builder\Tags\COFINSSTBuilder;
+use App\Modules\NFE\Builder\Tags\DestBuilder;
+use App\Modules\NFE\Builder\Tags\DetPagBuilder;
+use App\Modules\NFE\Builder\Tags\DupBuilder;
+use App\Modules\NFE\Builder\Tags\EmitBuilder;
+use App\Modules\NFE\Builder\Tags\FatBuilder;
+use App\Modules\NFE\Builder\Tags\ICMSBuilder;
+use App\Modules\NFE\Builder\Tags\ICMSTotBuilder;
 use App\Modules\NFE\Builder\Tags\InfNFeBuilder;
 use App\Modules\NFE\Builder\Tags\IdeBuilder;
+use App\Modules\NFE\Builder\Tags\ImpostoBuilder;
+use App\Modules\NFE\Builder\Tags\IPIBuilder;
+use App\Modules\NFE\Builder\Tags\PagBuilder;
+use App\Modules\NFE\Builder\Tags\PISBuilder;
+use App\Modules\NFE\Builder\Tags\ProdBuilder;
+use App\Modules\NFE\Builder\Tags\TranspBuilder;
+use App\Modules\NFE\Builder\Tags\VolBuilder;
 use NFePHP\NFe\Make;
 
 class Builder
 {
     private InfNFeBuilder $infNFe;
     private IdeBuilder $ide;
+    private EmitBuilder $emit;
+    private DestBuilder $dest;
+    private ProdBuilder $prod;
+    private ImpostoBuilder $imposto;
+    private ICMSBuilder $icms;
+    private IPIBuilder $ipi;
+    private PISBuilder $pis;
+    private COFINSSTBuilder $cofinsST;
+    private COFINSBuilder $cofins;
+    private ICMSTotBuilder $icmsTot;
+    private TranspBuilder $transp;
+    private VolBuilder $vol;
+    private FatBuilder $fat;
+    private DupBuilder $dup;
+    private PagBuilder $pag;
+    private DetPagBuilder $detPag;
 
     public function __construct() {
         $this->infNFe = new InfNFeBuilder();
         $this->ide = new IdeBuilder();
+        $this->emit = new EmitBuilder();
+        $this->dest = new DestBuilder();
+        $this->prod = new ProdBuilder();
+        $this->imposto = new ImpostoBuilder();
+        $this->icms = new ICMSBuilder();
+        $this->ipi = new IPIBuilder();
+        $this->pis = new PISBuilder();
+        $this->cofinsST = new COFINSSTBuilder();
+        $this->cofins = new COFINSBuilder();
+        $this->icmsTot = new ICMSTotBuilder();
+        $this->transp = new TranspBuilder();
+        $this->vol = new VolBuilder();
+        $this->fat = new FatBuilder();
+        $this->dup = new DupBuilder();
+        $this->pag = new PagBuilder();
+        $this->detPag = new DetPagBuilder();
     }
 
     public function execute($params)
@@ -21,238 +69,59 @@ class Builder
         $nfe = new Make();
 
         $infNFe = (object) $this->infNFe->execute();
-        $nfe->taginfNFe($infNFe);
-
         $ide = (object) $this->ide->execute($params);
+        $emit = (object) $this->emit->execute($params);
+        $dest = (object) $this->dest->execute($params);
 
-        // $std = new \stdClass();
-        // $std->cUF = 35; //coloque um código real e válido
-        // $std->cNF = '80070008';
-        // $std->natOp = 'VENDA';
-        // $std->mod = 55;
-        // $std->serie = 1;
-        // $std->nNF = 10;
-        // $std->dhEmi = '2018-07-27T20:48:00-02:00';
-        // $std->dhSaiEnt = '2018-07-27T20:48:00-02:00';
-        // $std->tpNF = 1;
-        // $std->idDest = 1;
-        // $std->cMunFG = 3506003; //Código de município precisa ser válido
-        // $std->tpImp = 1;
-        // $std->tpEmis = 1;
-        // $std->cDV = 2;
-        // $std->tpAmb = 2; // Se deixar o tpAmb como 2 você emitirá a nota em ambiente de homologação(teste) e as notas fiscais aqui não tem valor fiscal
-        // $std->finNFe = 1;
-        // $std->indFinal = 0;
-        // $std->indPres = 0;
-        // $std->procEmi = '0';
-        // $std->verProc = 1;
+        foreach ($params['prodCollection'] as $prod) {
+            $produto = (object) $this->prod->execute($prod, $params);
+            $imposto = (object) $this->imposto->execute($prod);
+            $icms = (object) $this->icms->execute($prod);
+            $ipi = (object) $this->ipi->execute($prod);
+            $pis = (object) $this->pis->execute($prod);
+            $cofinsST = (object) $this->cofinsST->execute($prod);
+            $cofins = (object) $this->cofins->execute($prod);
+            $vol = (object) $this->vol->execute($prod);
+
+            $nfe->tagprod($produto);
+            $nfe->tagimposto($imposto);
+            $nfe->tagICMS($icms);
+            $nfe->tagIPI($ipi);
+            $nfe->tagPIS($pis);
+            $nfe->tagCOFINS($cofins);
+            $nfe->tagCOFINSST($cofinsST);
+            $nfe->tagvol($vol);
+        }
+
+        $nfe->taginfNFe($infNFe);
         $nfe->tagide($ide);
+        $nfe->tagemit($emit);
+        $nfe->tagdest($dest);
 
-        $std = new \stdClass();
-        $std->xNome = 'Razão social válida';
-        $std->IE = '11850790';
-        $std->CRT = 3;
-        $std->CNPJ = '39343382000191';
-        $nfe->tagemit($std);
-
-        $std = new \stdClass();
-        $std->xLgr = "Rua Teste";
-        $std->nro = '203';
-        $std->xBairro = 'Centro';
-        $std->cMun = 3506003; //Código de município precisa ser válido e igual o  cMunFG
-        $std->xMun = 'Bauru';
-        $std->UF = 'SP';
-        $std->CEP = '80045190';
-        $std->cPais = '1058';
-        $std->xPais = 'BRASIL';
-        $nfe->tagenderEmit($std);
-
-        $std = new \stdClass();
-        $std->xNome = 'Empresa destinatário teste';
-        $std->indIEDest = 2;
-        $std->IE = '253037107';
-        $std->CNPJ = '37784226000130';
-        $nfe->tagdest($std);
-
-        $std = new \stdClass();
-        $std->xLgr = "Rua Teste";
-        $std->nro = '203';
-        $std->xBairro = 'Centro';
-        $std->cMun = '3506003';
-        $std->xMun = 'Bauru';
-        $std->UF = 'SP';
-        $std->CEP = '80045190';
-        $std->cPais = '1058';
-        $std->xPais = 'BRASIL';
-        $nfe->tagenderDest($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->cEAN = 'SEM GTIN';
-        $std->cEANTrib = 'SEM GTIN';
-        $std->cProd = '0001';
-        $std->xProd = 'Produto teste';
-        $std->NCM = '84669330';
-        $std->CFOP = '5102';
-        $std->uCom = 'PÇ';
-        $std->qCom = '1.0000';
-        $std->vUnCom = '10.99';
-        $std->vProd = '10.99';
-        $std->uTrib = 'PÇ';
-        $std->qTrib = '1.0000';
-        $std->vUnTrib = '10.99';
-        $std->indTot = 1;
-        $nfe->tagprod($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->vTotTrib = 10.99;
-        $nfe->tagimposto($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->orig = 0;
-        $std->CST = '00';
-        $std->modBC = 0;
-        $std->vBC = '0.20';
-        $std->pICMS = '18.0000';
-        $std->vICMS = '0.04';
-        $nfe->tagICMS($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->cEnq = '999';
-        $std->CST = '50';
-        $std->vIPI = 0;
-        $std->vBC = 0;
-        $std->pIPI = 0;
-        $nfe->tagIPI($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->CST = '07';
-        $std->vBC = 0;
-        $std->pPIS = 0;
-        $std->vPIS = 0;
-        $nfe->tagPIS($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->vCOFINS = 0;
-        $std->vBC = 0;
-        $std->pCOFINS = 0;
-
-        $nfe->tagCOFINSST($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->CST = '01';
-        $std->vBC = 0;
-        $std->pCOFINS = 0;
-        $std->vCOFINS = 0;
-        $std->qBCProd = 0;
-        $std->vAliqProd = 0;
-        $nfe->tagCOFINS($std);
-
-        $std = new \stdClass();
-        $std->vBC = '0.20';
-        $std->vICMS = 0.04;
-        $std->vICMSDeson = 0.00;
-        $std->vBCST = 0.00;
-        $std->vST = 0.00;
-        $std->vProd = 10.99;
-        $std->vFrete = 0.00;
-        $std->vSeg = 0.00;
-        $std->vDesc = 0.00;
-        $std->vII = 0.00;
-        $std->vIPI = 0.00;
-        $std->vPIS = 0.00;
-        $std->vCOFINS = 0.00;
-        $std->vOutro = 0.00;
-        $std->vNF = 11.03;
-        $std->vTotTrib = 0.00;
-        $nfe->tagICMSTot($std);
-
-        $std = new \stdClass();
-        $std->modFrete = 1;
-        $nfe->tagtransp($std);
-
-        $std = new \stdClass();
-        $std->item = 1;
-        $std->qVol = 2;
-        $std->esp = 'caixa';
-        $std->marca = 'OLX';
-        $std->nVol = '11111';
-        $std->pesoL = 10.00;
-        $std->pesoB = 11.00;
-        $nfe->tagvol($std);
-
-        $std = new \stdClass();
-        $std->nFat = '002';
-        $std->vOrig = 100;
-        $std->vLiq = 100;
-        $nfe->tagfat($std);
-
-        $std = new \stdClass();
-        $std->nDup = '001';
-        $std->dVenc = date('Y-m-d');
-        $std->vDup = 11.03;
-        $nfe->tagdup($std);
-
-        $std = new \stdClass();
-        $std->vTroco = 0;
-        $nfe->tagpag($std);
-
-        $std = new \stdClass();
-        $std->indPag = 0;
-        $std->tPag = "01";
-        $std->vPag = 10.99;
-        $std->indPag=0;
-        $nfe->tagdetPag($std);
-        
-        $xml = $nfe->getXML(); // O conteúdo do XML fica armazenado na variável $xml
-
-        $config  = [
-            "atualizacao"=>date('Y-m-d h:i:s'),
-            "tpAmb"=> 2,
-            "razaosocial" => "RAZAO SOCIAL DO EMISSOR",
-            "cnpj" => "39343382000191", // PRECISA SER VÁLIDO
-            "ie" => '11850790', // PRECISA SER VÁLIDO
-            "siglaUF" => "SP",
-            "schemes" => "PL_009_V4",
-            "versao" => '4.00',
-            "tokenIBPT" => "AAAAAAA",
-            "CSC" => "GPB0JBWLUR6HWFTVEAS6RJ69GPCROFPBBB8G",
-            "CSCid" => "000002",
-            "aProxyConf" => [
-                "proxyIp" => "",
-                "proxyPort" => "",
-                "proxyUser" => "",
-                "proxyPass" => ""
-            ]
-        ];
-        
-        $configJson = json_encode($config);
-        $certificadoDigital = file_get_contents("/tmp/cert.pfx");
-
-        $tools = new \NFePHP\NFe\Tools($configJson, \NFePHP\Common\Certificate::readPfx($certificadoDigital, '123456'));
-        try {
-            $xmlAssinado = $tools->signNFe($xml); // O conteúdo do XML assinado fica armazenado na variável $xmlAssinado
-        } catch (\Exception $e) {
-            //aqui você trata possíveis exceptions da assinatura
-            exit($e->getMessage());
+        if (!empty($emit->enderEmit)) {
+            $nfe->tagenderEmit($emit->enderEmit);
         }
 
-        $idLote = str_pad(100, 15, '0', STR_PAD_LEFT); // Identificador do lote
-        $resp = $tools->sefazEnviaLote([$xmlAssinado], $idLote);
-
-        $st = new \NFePHP\NFe\Common\Standardize();
-        $std = $st->toStd($resp);
-        if ($std->cStat != 103) {
-            //erro registrar e voltar
-            exit("[$std->cStat] $std->xMotivo");
+        if (!empty($dest->enderDest)) {
+            $nfe->tagenderDest($dest->enderDest);
         }
-        $recibo = $std->infRec->nRec; // Vamos usar a variável $recibo para consultar o status da nota
-        return ["status" => $xmlAssinado];
+
+        $icmsTot = $this->icmsTot->execute($params);
+        $transp = $this->transp->execute($params);
+        $fat = $this->fat->execute($params);
+        $dup = $this->dup->execute($params);
+        $pag = $this->pag->execute($params);
+        $detPag = $this->detPag->execute($params);
+
+        $nfe->tagICMSTot($icmsTot);
+        $nfe->tagtransp($transp);
+        $nfe->tagfat($fat);
+        $nfe->tagdup($dup);
+        $nfe->tagpag($pag);
+        $nfe->tagdetPag($detPag);
+        
+        $xml = $nfe->getXML();
+
+        return $xml;
     }
 }
